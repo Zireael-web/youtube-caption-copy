@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Свои субтитры · YouTube",
+  "version": "1.1.0",
+  "description": "Копирование текста выбранных субтитров YouTube в буфер обмена. Локально, без регистрации и таймкодов.",
+  "minimum_chrome_version": "111",
+  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_title": "Свои субтитры — открыть панель" },
+  "commands": { "_execute_action": { "suggested_key": { "default": "Alt+Shift+S", "mac": "Alt+Shift+S" }, "description": "Открыть субтитры" } }
+}

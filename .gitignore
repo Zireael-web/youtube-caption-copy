@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+*.zip
+*.crx
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+.npmrc
+*.log
+coverage/
+test-downloads/
