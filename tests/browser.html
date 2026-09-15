@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><title>Проверка интерфейса субтитров</title>
+<style>body{font:16px system-ui;background:#edf1ef;color:#24322a;padding:30px;max-width:700px}button,select{font:inherit;padding:10px;margin:5px}pre{white-space:pre-wrap}a{color:#165e3a}</style>
+<h1>Локальный стенд проверки</h1>
+<p>Синтетические данные. Используется настоящий код интерфейса и конвертера расширения.</p>
+<label>Сценарий <select id="scenario"><option value="json">JSON3, две дорожки</option><option value="xml">XML, специальные символы</option><option value="empty">Нет субтитров</option><option value="error">Ошибка YouTube</option></select></label>
+<button id="open">Открыть панель</button>
+<h2>Проверка буфера обмена</h2><p>После копирования вставьте текст в поле ниже.</p><textarea id="paste-check" aria-label="Вставить из буфера" rows="8" style="width:100%"></textarea><output id="paste-summary" aria-live="polite"></output>
+<script src="../extension/core.js"></script><script src="browser.js"></script></html>
