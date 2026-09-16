@@ -1,6 +1,14 @@
+![YouTube Caption Copy — illustrated project overview](docs/assets/cover.svg)
+
 # YouTube Caption Copy
 
+[![Tests](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml/badge.svg)](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml)
+
 Copy the caption text available for the current YouTube video to your clipboard.
+
+[Install locally](#install-locally) · [Features](#features) · [Privacy](#permissions-and-privacy) · [Development](#development)
+
+**JavaScript · Manifest V3 · Chrome & Brave**
 
 The extension runs locally in the active tab. It does not create downloads, require an extension account, use analytics, or run an external backend.
 
