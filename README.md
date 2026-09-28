@@ -1,89 +1,87 @@
-![YouTube Caption Copy — project illustration](docs/assets/cover.svg)
+![YouTube Caption Copy — иллюстрация проекта](docs/assets/cover.svg)
 
 # YouTube Caption Copy
 
-**English** | [Русский](README.ru.md)
+[![Тесты](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml/badge.svg)](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml)
 
-[![Tests](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml/badge.svg)](https://github.com/Zireael-web/youtube-caption-copy/actions/workflows/tests.yml)
+Браузерное расширение, которое копирует доступные субтитры текущего видео YouTube в буфер обмена — обычным текстом, без таймкодов и скачивания файлов.
 
-A browser extension that copies the available captions of the current YouTube video to the clipboard as plain text — no timestamps and no file downloads.
-
-[Install](#local-install) · [Features](#features) · [Privacy](#permissions-and-privacy) · [Development](#development)
+[Установка](#локальная-установка) · [Возможности](#возможности) · [Приватность](#разрешения-и-приватность) · [Разработка](#разработка)
 
 **JavaScript · Manifest V3 · Chrome & Brave**
 
-The extension works locally in the active tab. It needs no account and no external backend, and it has no analytics and no download feature. The interface is in Russian.
+Расширение работает локально в активной вкладке. Для него не нужны отдельный аккаунт или внешний backend; в нём нет аналитики и функции скачивания файлов. Интерфейс — на русском языке.
 
-For me this is a practical frontend project: UI, DOM work and browser APIs in plain JavaScript.
+Для меня это практический frontend-проект: интерфейс, работа с DOM и браузерными API на чистом JavaScript.
 
-## Features
+## Возможности
 
-- Shows original and auto-generated captions, plus YouTube translations when the player offers them.
-- Copies plain text without timestamps, numbering or the video title.
-- Starts working only after the user launches it for the current tab.
-- Keeps caption text and track URLs in memory only, for the active session.
-- Needs no build step or extra dependencies to run.
+- Показывает исходные и автоматические субтитры, а также переводы YouTube, если они доступны в плеере.
+- Копирует обычный текст без таймкодов, нумерации и названия видео.
+- Начинает работать только после запуска пользователем для текущей вкладки.
+- Хранит текст субтитров и адреса дорожек только в памяти на время активной сессии.
+- Не требует сборки или дополнительных зависимостей для работы.
 
-## Local install
+## Локальная установка
 
-1. Clone or download the repository into a folder you do not plan to delete or move.
-2. Open `chrome://extensions` in Chrome or `brave://extensions` in Brave.
-3. Turn on **Developer mode**.
-4. Click **Load unpacked** and select the `extension` folder that contains `manifest.json`.
-5. Pin the extension to the toolbar, open a YouTube video and click the extension icon. Pick a caption track and click **Копировать текст** ("Copy text").
+1. Клонируйте или скачайте репозиторий в папку, которую не планируете удалять или перемещать.
+2. Откройте `chrome://extensions` в Chrome или `brave://extensions` в Brave.
+3. Включите **Режим разработчика** (Developer mode).
+4. Нажмите **Загрузить распакованное расширение** (Load unpacked) и выберите папку `extension`, в которой лежит `manifest.json`.
+5. Закрепите расширение на панели браузера, откройте видео YouTube и нажмите на значок расширения. Выберите дорожку субтитров и нажмите **Копировать текст**.
 
-A ready-made archive of the `extension` folder is attached to each [release](https://github.com/Zireael-web/youtube-caption-copy/releases/latest): unzip it and load that folder the same way.
+Готовый архив папки `extension` приложен к каждому [релизу](https://github.com/Zireael-web/youtube-caption-copy/releases/latest): распакуйте его и загрузите папку тем же способом.
 
-After changing the sources, reload the extension on the browser's extensions page and then refresh the YouTube tab.
+После изменения исходников перезагрузите расширение на странице расширений браузера, а затем обновите вкладку YouTube.
 
-## Permissions and privacy
+## Разрешения и приватность
 
-| Permission | Why it is needed |
+| Разрешение | Для чего нужно |
 | --- | --- |
-| `activeTab` | Grants temporary access to the current tab after the user launches the extension. |
-| `scripting` | Opens the panel and reads caption information from the active YouTube player. |
-| `clipboardWrite` | Writes the selected caption text to the clipboard when the user clicks. |
+| `activeTab` | Даёт временный доступ к текущей вкладке после запуска расширения пользователем. |
+| `scripting` | Открывает панель и получает сведения о субтитрах из активного плеера YouTube. |
+| `clipboardWrite` | Записывает выбранный текст субтитров в буфер обмена по нажатию пользователя. |
 
-The extension does not request the `downloads` or `clipboardRead` permissions. It does not read the clipboard, keeps no persistent history, never sends captions to external services and has no server of its own.
+Расширение не запрашивает разрешения `downloads` и `clipboardRead`. Оно не читает содержимое буфера обмена, не сохраняет постоянную историю, не отправляет субтитры на внешние сервисы и не обращается к собственному серверу расширения.
 
-Caption data comes from the active YouTube tab and is processed in memory. YouTube requests may need parameters generated by its player. This project does not hard-code, store or forward them to any separate service.
+Данные субтитров поступают из активной вкладки YouTube и обрабатываются в памяти. Для запросов YouTube могут понадобиться параметры, сформированные его плеером. В этом проекте они не зашиты в код, не сохраняются и не передаются отдельному сервису.
 
-## Limitations
+## Ограничения
 
-- Only captions that YouTube provides for the current video can be copied. The extension does not recognize speech.
-- Live streams, Shorts, restricted videos and videos without captions are not guaranteed to work.
-- Changes to the YouTube player or its internal interfaces may require code updates.
-- Users are responsible for respecting content rights and the platform's rules.
+- Можно скопировать только субтитры, которые YouTube предоставляет для текущего видео. Расширение не распознаёт речь.
+- Работа с прямыми эфирами, Shorts, видео с ограничениями доступа и видео без субтитров не гарантируется.
+- Изменения плеера или внутренних интерфейсов YouTube могут потребовать доработки кода.
+- Пользователь отвечает за соблюдение прав на контент и применимых правил платформы.
 
-The project is not affiliated with, endorsed by or sponsored by Google or YouTube.
+Проект не связан с Google или YouTube, не одобрен ими и не получает от них спонсорской поддержки.
 
-## Development
+## Разработка
 
-Node.js 20 or newer is needed only to run checks and tests.
+Node.js 20 или новее нужен только для запуска проверок и тестов.
 
 ```sh
 npm test
 npm run check
 ```
 
-- `extension/page-api.js` fetches the available tracks and caption text from YouTube.
-- `extension/core.js` converts JSON3 or XML captions to plain text.
-- `extension/panel.js` renders the panel and writes text to the clipboard.
-- `extension/background.js` connects the extension launch with messaging between the tab and the extension.
-- `tests/` holds the automated tests and a local browser page for checks on synthetic data.
+- `extension/page-api.js` получает доступные дорожки и текст субтитров из YouTube.
+- `extension/core.js` преобразует субтитры JSON3 или XML в обычный текст.
+- `extension/panel.js` отображает панель и записывает текст в буфер обмена.
+- `extension/background.js` связывает запуск расширения с обменом сообщениями между вкладкой и расширением.
+- `tests/` содержит автоматические тесты и локальную браузерную страницу для проверки на синтетических данных.
 
-To open the browser test page, run this from the repository root and go to `http://127.0.0.1:8765/tests/browser.html`:
+Чтобы открыть браузерную тестовую страницу, выполните команду из корня репозитория и перейдите по адресу `http://127.0.0.1:8765/tests/browser.html`.
 
 ```sh
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-## About
+## О проекте
 
-I built this side project for myself: I wanted caption text quickly, without extra files. Along the way I learned browser extension development — one more place to use frontend skills.
+Я сделал этот pet-проект для себя: хотелось быстро получать текст субтитров без лишних файлов. Заодно изучал разработку браузерных расширений — ещё одну область применения frontend-навыков.
 
-The cover is an illustration of the project idea, not a screenshot of the interface.
+Обложка — иллюстрация идеи проекта, а не скриншот интерфейса.
 
-## License
+## Лицензия
 
 [MIT](LICENSE)
